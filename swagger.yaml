@@ -1,0 +1,5633 @@
+openapi: 3.0.3
+info:
+  title: Swagger API Course FE
+  description: |-
+    This is a list api of course FE
+  contact:
+    email: lttd0204@gmail.com
+  version: 1.0.11
+servers:
+  - url: https://api-shop-l5ir.onrender.com
+tags:
+  - name: auth
+    description: Everything about auth
+    externalDocs:
+      description: Find out more about our auth
+      url: http://swagger.io
+  - name: users
+    description: Everything about your Users
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /api/auth/login:
+    post:
+      tags:
+        - auth
+      summary: Login user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: admin@gmail.com
+                password:
+                  type: string
+                  example: 123456789Kha@
+              required:
+                - email
+                - password
+          application/xml:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - email
+                - password
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/auth/register:
+    post:
+      tags:
+        - auth
+      summary: Register user
+      description: Register user
+      operationId: registerUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: admin@gmail.com
+                password:
+                  type: string
+                  example: 123456789Kha@
+              required:
+                - email
+                - password
+          application/xml:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - email
+                - password
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/auth/register-google:
+    post:
+      tags:
+        - auth
+      summary: Register user with google
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+          application/xml:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+
+  /api/auth/login-google:
+    post:
+      tags:
+        - auth
+      summary: Login user with google
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+          application/xml:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+
+  /api/auth/register-facebook:
+    post:
+      tags:
+        - auth
+      summary: Register user with facebook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+          application/xml:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+
+  /api/auth/login-facebook:
+    post:
+      tags:
+        - auth
+      summary: Login user with facebook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+          application/xml:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+              required:
+                - idToken
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+  
+  /api/auth/update-device:
+    post:
+      tags:
+        - auth
+      summary: update device token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deviceToken:
+                  type: string
+              required:
+                - deviceToken
+          application/xml:
+            schema:
+              type: object
+              properties:
+                deviceToken:
+                  type: string
+              required:
+                - deviceToken
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                deviceToken:
+                  type: string
+              required:
+                - deviceToken
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/auth/refresh-token:
+    post:
+      tags:
+        - auth
+      summary: get new accessToken
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/auth/logout:
+    post:
+      tags:
+        - auth
+      summary: logout user
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/auth/me:
+    get:
+      tags:
+        - auth
+      summary: Get my info of user
+      description: Get details info of user
+      operationId: getAuthMe
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - auth
+      summary: Update info by me
+      description: Update info by me
+      operationId: updateAuthMe
+      requestBody:
+        description: Update an existent user in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/User"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/User"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/auth/change-password:
+    patch:
+      tags:
+        - auth
+      summary: Change password of current user
+      description: Change password of current user
+      operationId: changePasswordMe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                currentPassword:
+                  type: string
+                  example: 123456789
+                newPassword:
+                  type: string
+                  example: 123456789
+              required:
+                - newPassword
+          application/xml:
+            schema:
+              type: object
+              properties:
+                newPassword:
+                  type: string
+                currentPassword:
+                  type: string
+              required:
+                - newPassword
+                - currentPassword
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                newPassword:
+                  type: string
+                currentPassword:
+                  type: string
+              required:
+                - newPassword
+                - currentPassword
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/auth/forgot-password:
+    post:
+      tags:
+        - auth
+      summary: Forgot password of current user
+      description: Forgot password of current user
+      operationId: forgotPasswordMe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: admin@gmail.com
+              required:
+                - email
+          application/xml:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+              required:
+                - email
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+              required:
+                - email
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+
+  /api/auth/reset-password:
+    post:
+      tags:
+        - auth
+      summary: reset password of  user
+      description: reset password of  user
+      operationId: resetPassword
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newPassword:
+                  type: string
+                  example: 12443433
+                secretKey:
+                  type: string
+                  example: 343243243423
+              required:
+                - newPassword
+                - secretKey
+          application/xml:
+            schema:
+              type: object
+              properties:
+                newPassword:
+                  type: string
+                secretKey:
+                  type: string
+              required:
+                - secretKey
+                - newPassword
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                newPassword:
+                  type: string
+                secretKey:
+                  type: string
+              required:
+                - newPassword
+                - secretKey
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/users:
+    post:
+      tags:
+        - users
+      summary: Add a new user
+      description: Add a new user
+      operationId: addUser
+      requestBody:
+        description: Create a new user
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/User"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/User"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - users
+      summary: Get all users
+      description: get all users
+      operationId: getAllUser
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list users
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list users
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list users
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list users
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+        - name: roleId
+          in: query
+          description: filter of list users by role id (if many add |)
+          required: false
+          example: "1|2"
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: filter of list users by status of user (if many add |)
+          required: false
+          example: "1|2"
+          schema:
+            type: string
+        - name: cityId
+          in: query
+          description: filter of list users by cityId of user (if many add |)
+          required: false
+          example: "1|2"
+          schema:
+            type: string
+        - name: userType
+          in: query
+          description: filter of list users by userType of user (if many add |)
+          required: false
+          example: "1|2|3"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  /api/users/{userId}:
+    get:
+      tags:
+        - users
+      summary: Get details user order by ID
+      description: Get details user by id of user
+      operationId: getOrderById
+      parameters:
+        - name: userId
+          in: path
+          description: ID of user that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - users
+      summary: Delete User by ID
+      description: Try delete user by id of user
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          description: ID of the user that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - users
+      summary: Update an existing user
+      description: Update an existing user by Id
+      operationId: updateUser
+      parameters:
+        - name: userId
+          in: path
+          description: user id of user updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent user in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/User"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/User"
+        required: true
+
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  /api/users/delete-many:
+    delete:
+      tags:
+        - users
+      summary: Delete many users by ids
+      description: Delete many users by list ids
+      operationId: deleteManyUser
+      requestBody:
+        description: Object chứa mảng id của user cần xóa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  /api/roles:
+    post:
+      tags:
+        - roles
+      summary: Add a new role
+      description: Add a new role
+      operationId: addRole
+      requestBody:
+        description: Create a new role
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Role"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Role"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Role"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Role"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Role"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - roles
+      summary: Get all role
+      description: get all roles
+      operationId: getAllRole
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list roles
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list roles
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list roles
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list roles
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Role"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Role"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  /api/roles/{roleId}:
+    get:
+      tags:
+        - roles
+      summary: Get details roles order by ID
+      description: Get details role by id of roles
+      operationId: getRoleById
+      parameters:
+        - name: roleId
+          in: path
+          description: ID of role that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Role"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Role"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+    delete:
+      tags:
+        - roles
+      summary: Delete rOLE by ID
+      description: Try delete user by id of user
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          description: ID of the user that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Role"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Role"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+    put:
+      tags:
+        - roles
+      summary: Update an existing role
+      description: Update an existing role by Id
+      operationId: updateRole
+      parameters:
+        - name: roleId
+          in: path
+          description: role id of role updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                permissions:
+                  type: array
+                  format: string
+                  example: []
+              required:
+                - name
+                - permissions
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                permissions:
+                  type: array
+                  format: string
+              required:
+                - name
+                - permissions
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                permissions:
+                  type: array
+                  format: string
+              required:
+                - name
+                - permissions
+
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Role"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Role"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  /api/roles/delete-many:
+    delete:
+      tags:
+        - roles
+      summary: Delete many roles by ids
+      description: Delete many roles by list ids
+      operationId: deleteManyRole
+      requestBody:
+        description: Object chứa mảng id của role cần xóa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roleIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Role"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Role"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Role"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Role"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  /api/product-types:
+    post:
+      tags:
+        - product-types
+      summary: Add a new product type
+      description: Add a new product type
+      operationId: addProductType
+      requestBody:
+        description: Create a new product type
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductType"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/ProductType"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/ProductType"
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - product-types
+      summary: Get all product types
+      description: get all product types
+      operationId: getAllProductTypes
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list product types
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list product types
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list product types
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list product types
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/product-types/{productTypeId}:
+    get:
+      tags:
+        - product-types
+      summary: Get details product type by ID
+      description: Get details product type by id of productTypes
+      operationId: getProductTypesById
+      parameters:
+        - name: productTypeId
+          in: path
+          description: ID of product type that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+    delete:
+      tags:
+        - product-types
+      summary: Delete product type by ID
+      description: Try delete product type by id of product types
+      operationId: deleteProductTypes
+      parameters:
+        - name: productTypeId
+          in: path
+          description: ID of the product type that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - product-types
+      summary: Update an existing product type
+      description: Update an existing product type by Id
+      operationId: updateProductType
+      parameters:
+        - name: productTypeId
+          in: path
+          description: product type id of product type updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent product type in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductType"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/ProductType"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/ProductType"
+        required: true
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/product-types/delete-many:
+    delete:
+      tags:
+        - product-types
+      summary: Delete many product types by ids
+      description: Delete many product types by list ids
+      operationId: deleteManyProductTypes
+      requestBody:
+        description: Object chứa mảng id của product type cần xóa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productTypeIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/ProductType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/city:
+    post:
+      tags:
+        - city
+      summary: Add a new city
+      description: Add a new city
+      operationId: addCity
+      requestBody:
+        description: Create a new city
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/City"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/City"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/City"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/City"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/City"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - city
+      summary: Get all product cities
+      description: get all cities
+      operationId: getAllCities
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list cities
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list cities
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list cities
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list cities
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/City"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/City"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/city/{cityId}:
+    get:
+      tags:
+        - city
+      summary: Get details city by ID
+      description: Get details city by id of Cities
+      operationId: getCityById
+      parameters:
+        - name: cityId
+          in: path
+          description: ID of city that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/City"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/City"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+    delete:
+      tags:
+        - city
+      summary: Delete city by ID
+      description: Try delete city by id of city
+      operationId: deleteCity
+      parameters:
+        - name: cityId
+          in: path
+          description: ID of the city that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/City"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/City"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - city
+      summary: Update an existing city
+      description: Update an existing city type by Id
+      operationId: updateCity
+      parameters:
+        - name: cityId
+          in: path
+          description: city id of city updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent city in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/City"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/City"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/City"
+        required: true
+
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/City"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/City"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  /api/city/delete-many:
+    delete:
+      tags:
+        - city
+      summary: Delete many cities by ids
+      description: Delete many cities by list ids
+      operationId: deleteManyCities
+      requestBody:
+        description: Object chứa mảng id của city cần xóa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cityIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/City"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/City"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/delivery-type:
+    post:
+      tags:
+        - delivery-type
+      summary: Add a new delivery type
+      description: Add a new delivery type
+      operationId: addDeliveryType
+      requestBody:
+        description: Create a new delivery type
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeliveryType"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/DeliveryType"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/DeliveryType"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - delivery-type
+      summary: Get all product delivery types
+      description: get all delivery types
+      operationId: getAllDeliveryTypes
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list delivery types
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list delivery types
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list delivery types
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list delivery types
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/delivery-type/{deliveryTypeId}:
+    get:
+      tags:
+        - delivery-type
+      summary: Get details delivery type by ID
+      description: Get details delivery type by id of delivery types
+      operationId: getDeliveryTypeById
+      parameters:
+        - name: deliveryTypeId
+          in: path
+          description: ID of delivery type that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+    delete:
+      tags:
+        - delivery-type
+      summary: Delete delivery type by ID
+      description: Try delete delivery type by id of city
+      operationId: deleteDeliveryType
+      parameters:
+        - name: deliveryTypeId
+          in: path
+          description: ID of the delivery type that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - delivery-type
+      summary: Update an existing delivery type
+      description: Update an existing delivery type by Id
+      operationId: updateCity
+      parameters:
+        - name: deliveryTypeId
+          in: path
+          description: delivery type id of delivery type updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent delivery type in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeliveryType"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/DeliveryType"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/DeliveryType"
+        required: true
+
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  /api/delivery-type/delete-many:
+    delete:
+      tags:
+        - delivery-type
+      summary: Delete many delivery types by ids
+      description: Delete many delivery types by list ids
+      operationId: deleteManyDeliveryTypes
+      requestBody:
+        description: Object chứa mảng id của delivery type cần xóa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deliveryTypeIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/DeliveryType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/payment-type:
+    post:
+      tags:
+        - payment-type
+      summary: Add a new payment type
+      description: Add a new payment type
+      operationId: addPaymentType
+      requestBody:
+        description: Create a new payment type
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentType"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/PaymentType"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PaymentType"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - payment-type
+      summary: Get all product payment types
+      description: get all payment types
+      operationId: getAllPaymentTypes
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list payment types
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list payment types
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list payment types
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list payment types
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/payment-type/{paymentTypeId}:
+    get:
+      tags:
+        - payment-type
+      summary: Get details payment type by ID
+      description: Get details payment type by id of payment types
+      operationId: getPaymentTypeById
+      parameters:
+        - name: paymentTypeId
+          in: path
+          description: ID of payment type that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+    delete:
+      tags:
+        - payment-type
+      summary: Delete payment type by ID
+      description: Try delete payment type by id of payment
+      operationId: deletePaymentType
+      parameters:
+        - name: paymentTypeId
+          in: path
+          description: ID of the payment type that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - payment-type
+      summary: Update an existing payment type
+      description: Update an existing payment type by Id
+      operationId: updateCity
+      parameters:
+        - name: paymentTypeId
+          in: path
+          description: payment type id of payment type updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent payment type in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentType"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/PaymentType"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/PaymentType"
+        required: true
+
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  /api/payment-type/delete-many:
+    delete:
+      tags:
+        - payment-type
+      summary: Delete many payment types by ids
+      description: Delete many payment types by list ids
+      operationId: deleteManyPaymentTypes
+      requestBody:
+        description: Object chứa mảng id của payment type cần xóa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                paymentTypeIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/PaymentType"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products:
+    post:
+      tags:
+        - products
+      summary: Add a new product
+      description: Add a new product
+      operationId: addProduct
+      requestBody:
+        description: Create a new product
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Product"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Product"
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - products
+      summary: Get all products
+      description: get all products
+      operationId: getAllProducts
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list products
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list products
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list products
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list products
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+        - name: productType
+          in: query
+          description: id of type product (if multiple add | )
+          required: false
+          schema:
+            type: string
+        - name: productLocation
+          in: query
+          description: id of location product (if multiple add | )
+          required: false
+          schema:
+              type: string
+        - name: status
+          in: query
+          description: status of product (0 | 1)
+          required: false
+          schema:
+            type: string
+        - name: minPrice
+          in: query
+          description: min price of product
+          required: false
+          schema:
+            type: number
+        - name: maxPrice
+          in: query
+          description: min price of product
+          required: false
+          schema:
+            type: number
+        - name: minStar
+          in: query
+          description: min star of product's review'
+          required: false
+          schema:
+            type: number
+        - name: maxStar
+          in: query
+          description: max star of product's review'
+          required: false
+          schema:
+            type: number
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products/{productId}:
+    get:
+      tags:
+        - products
+      summary: Get details product by ID
+      description: Get details product by id of products
+      operationId: getProductsById
+      parameters:
+        - name: productId
+          in: path
+          description: ID of product that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - products
+      summary: Update an existing produc
+      description: Update an existing product by Id
+      operationId: updateProduct
+      parameters:
+        - name: productId
+          in: path
+          description: product id of product updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent product in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Product"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Product"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - products
+      summary: Delete product by ID
+      description: Try delete product by id of products
+      operationId: deleteProduct
+      parameters:
+        - name: productId
+          in: path
+          description: ID of the product that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products/public:
+    get:
+      tags:
+        - products
+      summary: Get all products public (status = 1)
+      description: get all products public  (status = 1)
+      operationId: getAllProductsPublic
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list products
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list products
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list products
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list products
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+        - name: productType
+          in: query
+          description: id of type product (if multiple add | )
+          required: false
+          schema:
+            type: string
+        - name: productLocation
+          in: query
+          description: id of location product (if multiple add | )
+          required: false
+          schema:
+              type: string
+        - name: minPrice
+          in: query
+          description: min price of product
+          required: false
+          schema:
+            type: number
+        - name: maxPrice
+          in: query
+          description: min price of product
+          required: false
+          schema:
+            type: number
+        - name: minStar
+          in: query
+          description: min star of product's review'
+          required: false
+          schema:
+            type: number
+        - name: maxStar
+          in: query
+          description: max star of product's review'
+          required: false
+          schema:
+            type: number
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products/related:
+    get:
+      tags:
+        - products
+      summary: Get all related products public (status = 1)
+      description: get all related products public (status = 1)
+      operationId: getAllProductsRelatedPublic
+      parameters:
+        - name: slug
+          in: query
+          description: slug of product
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Limit of list products
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list products
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list products
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list products
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products/public/{productId}:
+    get:
+      tags:
+        - products
+      summary: Get details public product by ID (status = 1)
+      description: Get details public product by id of products  (status = 1)
+      operationId: getProductPublicById
+      parameters:
+        - name: productId
+          in: path
+          description: ID of product that needs to be fetched
+          required: true
+          schema:
+            type: string
+        - name: isViewed
+          in: query
+          description: count view of products
+          required: false
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products/public/slug/{slugId}:
+    get:
+      tags:
+        - products
+      summary: Get details public product by ID (status = 1)
+      description: Get details public product by id of products  (status = 1)
+      operationId: getProductPublicBySlug
+      parameters:
+        - name: slugId
+          in: path
+          description: slug of product that needs to be fetched
+          required: true
+          schema:
+            type: string
+        - name: isViewed
+          in: query
+          description: count view of products
+          required: false
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products/delete-many:
+    delete:
+      tags:
+        - products
+      summary: Delete many products by ids
+      description: Delete many products by list ids
+      operationId: deleteManyProducts
+      requestBody:
+        description: Object chứa mảng id của product cần xóa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products/like:
+    post:
+      tags:
+        - products
+      summary: Like product by idProduct
+      description: Like product by idProduct
+      operationId: likeProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: string
+                  format: uuid
+                  example: admin@gmail.com
+              required:
+                - productId
+          application/xml:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: string
+                  format: uuid
+              required:
+                - productId
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: string
+                  format: uuid
+              required:
+                - productId
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products/unlike:
+    post:
+      tags:
+        - products
+      summary: Unike product by idProduct
+      description: Unlike product by idProduct
+      operationId: unlikeProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: string
+                  format: uuid
+                  example: admin@gmail.com
+              required:
+                - productId
+          application/xml:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: string
+                  format: uuid
+              required:
+                - productId
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: string
+                  format: uuid
+              required:
+                - productId
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products/liked/me:
+    get:
+      tags:
+        - products
+      summary: Get list product of user liked
+      description: Get list product of user liked
+      operationId: getProductLiked
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list liked products
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list liked products
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list liked products
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/products/viewed/me:
+    get:
+      tags:
+        - products
+      summary: Get list product of user viewed
+      description: Get list product of user viewed
+      operationId: getProductViewed
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list viewed products
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list viewed products
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list viewed products
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  
+  /api/orders/status/{orderId}:
+    post:
+      tags:
+        - orders
+      summary: update orders by id
+      description: update status orders by id
+      operationId: updateStatusOrder
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of order that needs to be fetched
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isDelivered:
+                  type: boolean
+                  example: 1
+                isPaid:
+                  type: boolean
+                  example: 1
+                status: 
+                  type: number
+                  example: 0 | 1 | 2 | 3
+          application/xml:
+            schema:
+              type: object
+              properties:
+                isDelivered:
+                  type: boolean
+                  example: 1
+                isPaid:
+                  type: boolean
+                  example: 1
+                status: 
+                  type: number
+                  example: 0 | 1 | 2 | 3
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                isDelivered:
+                  type: boolean
+                  example: 1
+                isPaid:
+                  type: boolean
+                  example: 1
+                status: 
+                  type: number
+                  example: 0 | 1 | 2 | 3
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/orders:
+    post:
+      tags:
+        - orders
+      summary: Add a new order
+      description: Add a new order
+      operationId: addOrder
+      requestBody:
+        description: Create a new order
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Order"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Order"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Order"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - orders
+      summary: Get all orders by userId
+      description: get all orders userId
+      operationId: getAllOrders userId
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list orders
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list orders
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list orders
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list orders
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+        - name: userId
+          in: query
+          description: filter of list order by user id (if many add |)
+          required: false
+          example: "1|2"
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: filter of list orders by status of user (if many add |)
+          required: false
+          example: "1|2"
+          schema:
+            type: string
+        - name: productId
+          in: query
+          description: filter of list orders by productId of user (if many add |)
+          required: false
+          example: "1|2"
+          schema:
+            type: string
+        - name: cityId
+          in: query
+          description: filter of list orders by cityId of user (if many add |)
+          required: false
+          example: "1|2"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  /api/orders/me:
+    get:
+      tags:
+        - orders
+      summary: Get all orders of system
+      description: Get all orders of system
+      operationId: getAllOrderOfMe
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list orders of system
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list orders  of system
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: status
+          in: query
+          description: status of orders (add | if multiple)
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list orders  of system
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list orders  of system
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  
+  /api/orders/me/{orderId}:
+    get:
+      tags:
+        - orders
+      summary: Get all orders of me
+      description: Get details orders of me
+      operationId: getDetailOrderOfMe
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of order that needs to be fetched
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/orders/cancel/{orderId}:
+    post:
+      tags:
+        - orders
+      summary: cancel orders by id
+      description: cancel orders by id
+      operationId: cancelOrder
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of order that needs to be fetched
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/orders/me/cancel/{orderId}:
+    post:
+      tags:
+        - orders
+      summary: cancel orders of me
+      description: cancel orders of me
+      operationId: cancelOrderMe
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of order that needs to be fetched
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/orders/{orderId}:
+    get:
+      tags:
+        - orders
+      summary: Get details order by ID
+      description: Get details order by id of orders
+      operationId: getOrderById
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of order that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+    delete:
+      tags:
+        - orders
+      summary: Delete order by ID
+      description: Try delete by id of order
+      operationId: deleteOrder
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of the order that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - orders
+      summary: Update an existing order
+      description: Update an existing order by Id
+      operationId: updateOrder
+      parameters:
+        - name: orderId
+          in: path
+          description: order id of order updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent order in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Order"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Order"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Order"
+        required: true
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Order"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/reviews:
+    post:
+      tags:
+        - reviews
+      summary: Add a new review
+      description: Add a new review
+      operationId: addReview
+      requestBody:
+        description: Create a new review
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Review"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Review"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Review"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - reviews
+      summary: Get all reviews
+      description: get all reviews
+      operationId: getAllReviews
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list reviews
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list reviews
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list reviews
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list reviews
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+        - name: minStar
+          in: query
+          description: min star of product's review'
+          required: false
+          schema:
+            type: number
+        - name: maxStar
+          in: query
+          description: max star of product's review'
+          required: false
+          schema:
+            type: number
+        - name: userId
+          in: query
+          description: filter of list reviews by Id of user (filter multiple |)
+          required: false
+          schema:
+            type: string
+        - name: productId
+          in: query
+          description: sort of list reviews by id of product (filter multiple |)
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/reviews/{reviewId}:
+    get:
+      tags:
+        - reviews
+      summary: Get details review by ID
+      description: Get details review by id of reviews
+      operationId: getReviewById
+      parameters:
+        - name: reviewId
+          in: path
+          description: ID of review that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - reviews
+      summary: Delete review by ID
+      description: Try delete review by id of review
+      operationId: deleteReview
+      parameters:
+        - name: reviewId
+          in: path
+          description: ID of the review that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - reviews
+      summary: Update an existing review
+      description: Update an existing review by Id
+      operationId: updateReview
+      parameters:
+        - name: reviewId
+          in: path
+          description: review id of review updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent review in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Review"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Review"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Review"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/reviews/me/{reviewId}:
+    put:
+      tags:
+        - reviews
+      summary: Update an existing my review
+      description: Update an existing my review
+      operationId: updateReview
+      parameters:
+        - name: reviewId
+          in: path
+          description: review id of review updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent review in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Review"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Review"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Review"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+    delete:
+      tags:
+        - reviews
+      summary: Delete myb review
+      description: Try delete my review by id of you
+      operationId: deleteReview
+      parameters:
+        - name: reviewId
+          in: path
+          description: ID of the review that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/reviews/delete-many:
+    delete:
+      tags:
+        - reviews
+      summary: Delete many reviews by ids
+      description: Delete many reviews by list ids
+      operationId: deleteManyReviews
+      requestBody:
+        description: Object chứa mảng id của review cần xóa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reviewIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/comments/public:
+   get:
+      tags:
+        - comments
+      summary: get list public comment
+      description: list public comment
+      operationId: getListPublicComment
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list comments
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list comments
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list comments
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list comments
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+        - name: productId
+          in: query
+          description: comment of products
+          required: false
+          schema:
+            type: string
+        - name: userId
+          in: query
+          description: comment of user
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/comments:
+    post:
+      tags:
+        - comments
+      summary: Add a new comment
+      description: Add a new comment
+      operationId: addComment
+      requestBody:
+        description: Create a new comment
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Comment"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Comment"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - comments
+      summary: get list  comment
+      description: list comment
+      operationId: getListComment
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list comments
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list comments
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list comments
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: sort of list comments
+          required: false
+          example: "created asc"
+          schema:
+            type: string
+        - name: productId
+          in: query
+          description: comment of products
+          required: false
+          schema:
+            type: string
+        - name: userId
+          in: query
+          description: comment of user
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  
+  /api/comments/reply:
+    post:
+      tags:
+        - comments
+      summary: Add a reply of comment
+      description: Add a reply of comment
+      operationId: addReplyComment
+      requestBody:
+        description: Add a reply of comment
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Comment"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Comment"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/comments/{commentId}:
+    get:
+      tags:
+        - comments
+      summary: Get details comment by ID
+      description: Get details comment by id of comments
+      operationId: getCommentById
+      parameters:
+        - name: commentId
+          in: path
+          description: ID of comment that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - comments
+      summary: Delete comment by ID
+      description: Try delete comment by id of comment
+      operationId: deleteComment
+      parameters:
+        - name: commentId
+          in: path
+          description: ID of the comment that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - comments
+      summary: Update an existing comment
+      description: Update an existing comment by Id
+      operationId: updateComment
+      parameters:
+        - name: commentId
+          in: path
+          description: comment id of comment updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent comment in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Comment"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Comment"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/comment/me/{commentId}:
+    put:
+      tags:
+        - comments
+      summary: Update an existing my comment
+      description: Update an existing my comment
+      operationId: updateComment
+      parameters:
+        - name: commentId
+          in: path
+          description: comment id of comment updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent comment in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Comment"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Comment"
+        required: true
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+    delete:
+      tags:
+        - comments
+      summary: Delete my comment
+      description: Try delete my comment by id of you
+      operationId: deleteComment
+      parameters:
+        - name: commentId
+          in: path
+          description: ID of the comment that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/comments/delete-many:
+    delete:
+      tags:
+        - comments
+      summary: Delete many comments by ids
+      description: Delete many comments by list ids
+      operationId: deleteManyComments
+      requestBody:
+        description: Object chứa mảng id của comment cần xóa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commentIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/report/product-type/count:
+    get:
+      tags:
+        - report
+      summary: Get all total count of products
+      description: get all total count products
+      operationId: getCountProductType
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  
+  /api/report/user-type/count:
+    get:
+      tags:
+        - report
+      summary: Get all total count of users
+      description: get all total count users
+      operationId: getCountUserType
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/report/revenue-total:
+    get:
+      tags:
+        - report
+      summary: Get all revenue count of order
+      description: get all revenue order
+      operationId: getRevenueOrder
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/report/product-status/count:
+    get:
+      tags:
+        - report
+      summary: Get all product count by status
+      description: get all total count product by status
+      operationId: getCountProduct
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/report/order-status/count:
+    get:
+      tags:
+        - report
+      summary: Get all order count by status
+      description: get all total count order by status
+      operationId: getCountOrder
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/report/all-records/count:
+    get:
+      tags:
+        - report
+      summary: Get all total count of products,users,reviews,orders
+      description: get all total count products,users,reviews,orders
+      operationId: getCountAllRecord
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/notifications:
+    get:
+      tags:
+        - notifications
+      summary: Get all notification for every user login
+      description:  Get all notification for every user login
+      operationId: getAllNotification
+      parameters:
+        - name: limit
+          in: query
+          description: Limit of list notification of system
+          required: false
+          example: 10
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Page of list notification  of system
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: isRead
+          in: query
+          description: status isRead of notification (true or false)
+          required: false
+          example: 1
+          schema:
+            type: number
+        - name: search
+          in: query
+          description: search of list notification  of system
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Notification"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Notification"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  
+  /api/notifications/{notificationId}:
+    delete:
+      tags:
+        - notifications
+      summary: Delete notification by id
+      description: Delete notification by id
+      operationId: deleteNotification
+      parameters:
+        - name: productId
+          in: path
+          description: ID of notification that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Notification"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Notification"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/notifications/{notificationId}/read:
+    post:
+      tags:
+        - notifications
+      summary: marker read notification by id
+      description: marker read notification by id
+      operationId: markedReadNotification
+      parameters:
+        - name: notificationId
+          in: path
+          description: ID of notification that needs to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Notification"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Notification"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/notifications/all/read:
+    post:
+      tags:
+        - notifications
+      summary: marker read all notification by id
+      description: marker read all notification by id
+      operationId: markedReadAllNotification
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Notification"
+            application/xml:
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Notification"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+  /api/payment/vnpay/create_payment_url:
+    post:
+      tags:
+        - payment
+      summary: create url payment vnpay
+      description: create url payment vnpay
+      operationId: createPaymentVNPay
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                totalPrice:
+                  type: number
+                  example: 100
+                language:
+                  type: string
+                  example: vn
+                orderId:
+                  type: string
+                  format: uuid
+                  example: ""
+              required:
+                - totalPrice
+                - language
+                - orderId
+          application/xml:
+            schema:
+              type: object
+              properties:
+                totalPrice:
+                  type: number
+                language:
+                  type: string
+                orderId:
+                  type: string
+                  format: uuid
+              required:
+                - totalPrice
+                - language
+                - orderId
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                totalPrice:
+                  type: number
+                language:
+                  type: string
+                orderId:
+                  type: string
+                  format: uuid
+              required:
+                - totalPrice
+                - language
+                - orderId
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+  
+  /api/payment/vnpay/vnpay_ipn:
+    get:
+      tags:
+        - payment
+      summary: Get status payment vn pay
+      description: get status payment vn pay
+      operationId: getStatusVNPay
+    
+      parameters:
+        - name: vnp_TxnRef
+          in: path
+          description: vnp_TxnRef of payment
+          required: true
+          schema:
+            type: string
+        - name: vnp_SecureHash
+          in: path
+          description: vnp_SecureHash of payment
+          required: true
+          schema:
+            type: string
+        - name: vnp_ResponseCode
+          in: path
+          description: vnp_ResponseCode of payment
+          required: true
+          schema:
+            type: string
+        - name: orderId
+          in: path
+          description: orderId of payment
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "401":
+          description: UNAUTHORIZED
+        "500":
+          description: INTERNAL_SERVER_ERROR
+        "409":
+          description: ALREADY_EXIST
+        "400":
+          description: INVALID
+      security:
+        - bearerAuth: []
+
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+        orderItems:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              amount:
+                type: number
+              image:
+                type: string
+              price:
+                type: number
+              discount:
+                type: number
+              product:
+                type: string
+                format: uuid
+        shippingAddress:
+          type: object
+          properties:
+            fullName:
+              type: string
+            address:
+              type: string
+            city:
+              type: string
+            phone:
+              type: number
+        paymentMethod:
+          type: number
+          default: 0
+          enum: [0, 1, 2]
+        itemsPrice:
+          type: number
+        shippingPrice:
+          type: number
+        totalPrice:
+          type: number
+        user:
+          type: string
+          format: uuid
+        isPaid:
+          type: number
+          default: 0
+          enum: [0, 1]
+        paidAt:
+          type: string
+          format: date-time
+        isDelivered:
+          type: number
+          default: 0
+          enum: [0, 1]
+        deliveredAt:
+          type: string
+          format: date-time
+        status:
+          type: number
+          default: 0
+          enum: [0, 1]
+      required:
+        - orderItems
+        - shippingAddress
+        - paymentMethod
+        - itemsPrice
+        - shippingPrice
+        - totalPrice
+        - user
+      xml:
+        name: Order
+
+    Notification:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+        recipientIds:
+          type: array
+          items:
+            type: object
+            properties:
+              userId:
+                type: string
+                format: uuid
+              isRead:
+                type: boolean
+        referenceId:
+          type: string
+          format: uuid
+        body:
+          type: string
+        title:
+          type: string
+        context:
+          type: string
+      required:
+        - context
+        - title
+        - body
+      xml:
+        name: Notification
+
+    User:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        role:
+          type: string
+          default: string
+        phoneNumber:
+          type: string
+        address:
+          type: string
+        avatar:
+          type: string
+        city:
+          type: string
+        status:
+          type: number
+          default: 1
+          enum: [0, 1]
+        userType:
+          type: number
+          default: 3
+          enum: [1, 2, 3]
+        addresses:
+          type: array
+          items:
+            type: object
+            properties:
+              firstName:
+                type: string
+              lastName:
+                type: string
+              middleName:
+                type: string
+              phoneNumber:
+                type: string
+              price:
+                type: number
+              discount:
+                type: number
+              product:
+                type: string
+                format: uuid
+      required:
+        - email
+        - password
+      xml:
+        name: User
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        image:
+          type: string
+        location:
+          type: string
+          format: uuid
+        price:
+          type: number
+        countInStock:
+          type: number
+        description:
+          type: string
+        discount:
+          type: number
+        sold:
+          type: number
+        type:
+          type: string
+          format: uuid
+        discountStartDate:
+          type: string
+          format: date-time
+        discountEndDate:
+          type: string
+          format: date-time
+        status:
+          type: number
+          default: 0
+          enum: [0, 1]
+      required:
+        - name
+        - slug
+        - image
+        - type
+        - price
+        - countInStock
+        - location
+      xml:
+        name: Product
+    ProductType:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+      required:
+        - name
+        - slug
+      xml:
+        name: ProductType
+    Review:
+      type: object
+      properties:
+        content:
+          type: string
+        star:
+          type: number
+          minimum: 1
+          maximum: 5
+        product:
+          type: string
+          format: uuid
+        user:
+          type: string
+          format: uuid
+      required:
+        - content
+        - star
+        - product
+        - user
+      xml:
+        name: Review
+    Comment:
+      type: object
+      properties:
+        content:
+          type: string
+        product:
+          type: string
+          format: uuid
+        user:
+          type: string
+          format: uuid
+      required:
+        - content
+        - user
+        - product
+      xml:
+        name: Review
+    Role:
+      type: object
+      properties:
+        name:
+          type: string
+        permissions:
+          type: array
+      required:
+        - name
+        - permissions
+      xml:
+        name: Role
+    City:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+      xml:
+        name: City
+    PaymentType:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+        - name
+        - type
+      xml:
+        name: PaymentType
+    DeliveryType:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: number
+      required:
+        - name
+        - price
+      xml:
+        name: DeliveryType
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
